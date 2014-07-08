@@ -27,6 +27,9 @@ function BookBinding (book, opts) {
   })
   this.element = document.createElement('div')
   this.element.style.backgroundImage = 'url(' + this.opts.image + ')'
+  Object.keys(this.opts.padding || {}).forEach(function(key){
+              
+  })
 }
 
 BookBinding.prototype.appendTo = function (target) {

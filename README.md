@@ -1,7 +1,7 @@
 bookbinding
 ===========
 
-Create a book binding style background for a [pagemaker](https://github.com/binocarlos/pagemaker) book
+Create a book binding style background for some HTML content
 
 ## installation
 
@@ -11,31 +11,22 @@ $ component install binocarlos/bookbinding
 
 ## example
 
-Create a [pagemaker](https://github.com/binocarlos/pagemaker) book and pass it to bookbinding
+Create a binding and append a HTML element before adding the binding to the page
 
 ```js
-var PageMaker = require('pagemaker')
 var BookBinding = require('bookbinding')
-var data = {
-	title:"My Cool Book",
-	pages:[{
-		title:"Intro",
-		html:"<p>This is the first page</p>"
-	},
-	...]
-}
+var binding = BookBinding()
 
-var book = PageMaker(data)
-var binding = BookBinding(book)
+// build your content element anyhow
+var content = document.createElement('div')
 
+binding.appendChild(content)
 binding.appendTo(document.querySelector('#container'))
 ```
 
 ## api
 
-### `var binding = BookBinding(book, opts)`
-
-Create a new book binding by passing in a [pagemaker](https://github.com/binocarlos/pagemaker) book and an options object.
+### `var binding = BookBinding(opts)`
 
 The options object has the following properties:
 
@@ -46,14 +37,19 @@ The options object has the following properties:
  * paddingRight
  * paddingBottom
  
-The padding controls how much of the image is viewable content - the book itself will be rendered into the inner container.
+The padding controls how much of the background image is viewable content.
+
+The content element occupies the center as defined by the padding.
+
+They are in percentages and default to 0
 
 ```js
-var binding = BookBinding(book, {
+var binding = BookBinding({
 	image:'myimage.png',
+	// all paddings get converted to percentages
 	padding:{
-		left:10,
-		top:12,
+		left:10, // this means 10%
+		top:'12%',
 		right:10,
 		bottom:12
 	}

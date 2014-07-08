@@ -10,8 +10,9 @@ var defaults = {
 	}
 }
 
-function BookBinding (book, opts) {
-  if (!(this instanceof BookBinding)) return new BookBinding(book, opts);
+function BookBinding (opts) {
+  if (!(this instanceof BookBinding)) return new BookBinding(opts);
+  var self = this;
   opts = opts || {}
   Object.keys(defaults || {}).forEach(function(key){
   	if(!opts[key]){
@@ -28,11 +29,15 @@ function BookBinding (book, opts) {
   this.element = document.createElement('div')
   this.element.style.backgroundImage = 'url(' + this.opts.image + ')'
   Object.keys(this.opts.padding || {}).forEach(function(key){
-              
+    self.element.style['padding-' + key] = processPercent(self.opts.padding[key])
   })
 }
 
+BookBinding.prototype.appendChild = function (child) {
+  this.element.appendChild(child)
+}
+
 BookBinding.prototype.appendTo = function (target) {
-  if (typeof target === 'string') target = document.querySelector(target);
-  target.appendChild(this.element);
+  if (typeof target === 'string') target = document.querySelector(target)
+  target.appendChild(this.element)
 };

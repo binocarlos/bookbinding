@@ -58,5 +58,13 @@ var binding = BookBinding({
 binding.appendTo(document.querySelector('#container'))
 ```
 
+### `binding.appendTo(target)`
+
+Append the binding element to a DOM element or selector string
+
+### `binding.appendChild(contentElement)`
+
+Append a content element to the book-binding background.
+
 ## licence
 MIT

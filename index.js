@@ -11,7 +11,7 @@ var defaults = {
 }
 
 function BookBinding (book, opts) {
-  if (!(this instanceof BookBinding)) return new BookBinding(opts);
+  if (!(this instanceof BookBinding)) return new BookBinding(book, opts);
   opts = opts || {}
   Object.keys(defaults || {}).forEach(function(key){
   	if(!opts[key]){

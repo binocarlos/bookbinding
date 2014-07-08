@@ -1,7 +1,7 @@
 {
   "name": "bookbinding",
   "description": "Create a book binding style background for a pagemaker book",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "keywords": [],
   "dependencies": {
     

@@ -31,28 +31,23 @@ binding.appendTo(document.querySelector('#container'))
 The options object has the following properties:
 
  * image - a background image for the binding
- * padding - an object with left,right,top,bottom properties
- * paddingLeft
- * paddingTop
- * paddingRight
- * paddingBottom
+ * left
+ * top
+ * width
+ * height
  
-The padding controls how much of the background image is viewable content.
-
-The content element occupies the center as defined by the padding.
+The content element occupies the center as defined by the size settings.
 
 They are in percentages and default to 0
 
 ```js
 var binding = BookBinding({
 	image:'myimage.png',
-	// all paddings get converted to percentages
-	padding:{
-		left:10, // this means 10%
-		top:'12%',
-		right:10,
-		bottom:12
-	}
+	// all are converted to percentages
+	left:10, // this means 10%
+	top:'12%',
+	width:80,
+	height:14
 })
 
 binding.appendTo(document.querySelector('#container'))

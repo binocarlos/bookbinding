@@ -31,6 +31,8 @@ binding.appendTo(document.querySelector('#container'))
 The options object has the following properties:
 
  * image - a background image for the binding
+ * imageWidth - the width of the background image
+ * imageHeight - the height of the background image
  * left
  * top
  * width
@@ -43,6 +45,8 @@ They are in percentages and default to 0
 ```js
 var binding = BookBinding({
 	image:'myimage.png',
+	imageWidth:800,
+	imageHeight:600,
 	// all are converted to percentages
 	left:10, // this means 10%
 	top:'12%',

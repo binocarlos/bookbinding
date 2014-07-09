@@ -4,6 +4,8 @@ module.exports = BookBinding;
 
 var defaults = {
   image:'build/binocarlos-bookbinding/bookbg.png',
+  imageWidth:939,
+  imageHeight:570,
   left:'3.6%',
   top:'2.8%',
   width:'93.3%',
@@ -38,6 +40,15 @@ function BookBinding (opts) {
   })
 
   this.element.appendChild(this.content)
+
+  setTimeout(this.adjustContentHeight.bind(this),1)
+}
+
+BookBinding.prototype.adjustContentHeight = function(){
+  var width = this.element.offsetWidth
+  var widthPercent = width / this.opts.imageWidth
+  var newHeight = this.opts.imageHeight * widthPercent
+  this.element.style.height = newHeight + 'px'
 }
 
 BookBinding.prototype.appendChild = function (child) {

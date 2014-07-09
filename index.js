@@ -1,3 +1,5 @@
+var percent = require('percent-string')
+
 module.exports = BookBinding;
 
 var defaults = {
@@ -13,7 +15,7 @@ var defaults = {
 function BookBinding (opts) {
   if (!(this instanceof BookBinding)) return new BookBinding(opts);
   var self = this;
-  opts = opts || {}
+  this.opts = opts = opts || {}
   Object.keys(defaults || {}).forEach(function(key){
   	if(!opts[key]){
   		opts[key] = defaults[key]
@@ -29,7 +31,7 @@ function BookBinding (opts) {
   this.element = document.createElement('div')
   this.element.style.backgroundImage = 'url(' + this.opts.image + ')'
   Object.keys(this.opts.padding || {}).forEach(function(key){
-    self.element.style['padding-' + key] = processPercent(self.opts.padding[key])
+    self.element.style['padding-' + key] = percent(self.opts.padding[key])
   })
 }
 

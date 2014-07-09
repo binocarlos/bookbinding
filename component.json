@@ -4,11 +4,11 @@
   "version": "0.1.0",
   "keywords": [],
   "dependencies": {
-    
+    "binocarlos/percent-string": "*"
   },
   "development": {},
   "styles": [],
-  "files":[
+  "files": [
     "bookbg.png"
   ],
   "main": "index.js",

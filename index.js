@@ -10,6 +10,8 @@ var defaults = {
   height:'93.2%'
 }
 
+var fields = ['left', 'top', 'width', 'height']
+
 function BookBinding (opts) {
   if (!(this instanceof BookBinding)) return new BookBinding(opts);
   var self = this;
@@ -31,7 +33,7 @@ function BookBinding (opts) {
   this.content = document.createElement('div')
   this.content.style.position = 'absolute'
 
-  ['left', 'top', 'width', 'height'].forEach(function(prop){
+  fields.forEach(function(prop){
     self.content.style[prop] = percent(opts[prop])
   })
 

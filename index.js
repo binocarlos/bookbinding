@@ -3,7 +3,7 @@ var percent = require('percent-string')
 module.exports = BookBinding;
 
 var defaults = {
-	image:'build/bookbinding/bookbg.png',
+	image:'build/binocarlos-bookbinding/bookbg.png',
 	padding:{
 		left:10,
 		right:10,

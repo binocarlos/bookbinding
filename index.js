@@ -9,7 +9,7 @@ var defaults = {
   left:'3.2%',
   top:'2.8%',
   width:'93.8%',
-  height:'94%'
+  height:'95%'
 }
 
 var fields = ['left', 'top', 'width', 'height']

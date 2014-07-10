@@ -6,10 +6,10 @@ var defaults = {
   image:'build/binocarlos-bookbinding/bookbg.png',
   imageWidth:939,
   imageHeight:570,
-  left:'3.5%',
+  left:'3.2%',
   top:'2.8%',
-  width:'93.5%',
-  height:'93.4%'
+  width:'93.8%',
+  height:'94%'
 }
 
 var fields = ['left', 'top', 'width', 'height']

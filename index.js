@@ -43,7 +43,9 @@ function BookBinding (opts) {
   this.element.appendChild(this.content)
 
   function runResize(){
-    setTimeout(self.adjustContentHeight.bind(self),1)  
+    setTimeout(function(){
+      self.adjustContentHeight()
+    }, 10)
   }
 
   resize.bind(this.element, runResize)

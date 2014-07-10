@@ -1,4 +1,5 @@
 var percent = require('percent-string')
+var resize = require('resize')
 
 module.exports = BookBinding;
 
@@ -41,7 +42,13 @@ function BookBinding (opts) {
 
   this.element.appendChild(this.content)
 
-  setTimeout(this.adjustContentHeight.bind(this),1)
+  function runResize(){
+    setTimeout(self.adjustContentHeight.bind(self),1)  
+  }
+
+  resize.bind(this.element, runResize)
+
+  runResize()
 }
 
 BookBinding.prototype.adjustContentHeight = function(){

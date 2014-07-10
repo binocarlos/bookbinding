@@ -8,8 +8,8 @@ var defaults = {
   imageHeight:570,
   left:'3.2%',
   top:'2.8%',
-  width:'93.8%',
-  height:'95%'
+  width:'93.7%',
+  height:'93.9%'
 }
 
 var fields = ['left', 'top', 'width', 'height']

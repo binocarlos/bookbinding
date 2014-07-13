@@ -37,6 +37,16 @@ function BookBinding (opts) {
   this.image.setAttribute('src', this.opts.image)
   this.image.style.width = '100%'
 
+  this.image.isLoaded = false;
+  
+  this.image.onload = function(){
+      self.image.isLoaded = true;
+      self.adjustContentHeight()
+  }
+  if(this.image.isLoaded){
+    self.adjustContentHeight()
+  }
+
   this.element.style.position = 'absolute'
   this.element.style.width = '100%'
   this.element.style.height = '100%'
@@ -66,6 +76,7 @@ BookBinding.prototype.adjustContentHeight = function(){
   var width = this.element.offsetWidth
   var widthPercent = width / this.opts.imageWidth
   var newHeight = this.opts.imageHeight * widthPercent
+  this.image.style.height = newHeight + 'px'
   this.element.style.height = newHeight + 'px'
 }
 

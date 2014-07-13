@@ -7,10 +7,10 @@ var defaults = {
   image:'build/binocarlos-bookbinding/bookbg.png',
   imageWidth:939,
   imageHeight:570,
-  left:'3.2%',
-  top:'2.8%',
-  width:'94%',
-  height:'94%'
+  left:3.2,
+  top:3.4,
+  width:94,
+  height:94
 }
 
 var fields = ['left', 'top', 'width', 'height']
@@ -53,10 +53,6 @@ function BookBinding (opts) {
   
   this.contentElement.style.position = 'absolute'
 
-  fields.forEach(function(prop){
-    self.contentElement.style[prop] = percent(opts[prop])
-  })
-
   this.imageElement.appendChild(this.image)
   this.element.appendChild(this.imageElement)
   this.element.appendChild(this.contentElement)
@@ -73,11 +69,21 @@ function BookBinding (opts) {
 }
 
 BookBinding.prototype.adjustContentHeight = function(){
+  var self = this;
   var width = this.element.offsetWidth
   var widthPercent = width / this.opts.imageWidth
   var newHeight = this.opts.imageHeight * widthPercent
   this.image.style.height = newHeight + 'px'
   this.element.style.height = newHeight + 'px'
+
+  this.contentElement.style.width = '100%'
+  this.contentElement.style.height = '100%'
+  fields.forEach(function(prop){
+    console.log(prop)
+    console.log(percent(self.opts[prop]))
+    self.contentElement.style[prop] = percent(self.opts[prop])
+  })
+
 }
 
 BookBinding.prototype.appendChild = function (child) {

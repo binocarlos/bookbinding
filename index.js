@@ -24,23 +24,32 @@ function BookBinding (opts) {
       opts[key] = defaults[key]
     }
   })
+
   this.element = document.createElement('div')
-  this.element.style.backgroundImage = 'url(' + this.opts.image + ')'
-  this.element.style.backgroundSize = 'contain'
-  this.element.style.backgroundRepeat = 'no-repeat'
-  this.element.style.backgroundPosition = 'center top'
+  this.contentElement = document.createElement('div')
+  this.imageElement = document.createElement('div')
+  this.image = document.createElement('img')
+  
+  this.imageElement.style.position = 'absolute'
+  this.imageElement.style.width = '100%'
+  this.imageElement.style.height = '100%'
+
+  this.image.setAttribute('src', this.opts.image)
+  this.image.style.width = '100%'
+
   this.element.style.position = 'absolute'
   this.element.style.width = '100%'
   this.element.style.height = '100%'
   
-  this.content = document.createElement('div')
-  this.content.style.position = 'absolute'
+  this.contentElement.style.position = 'absolute'
 
   fields.forEach(function(prop){
-    self.content.style[prop] = percent(opts[prop])
+    self.contentElement.style[prop] = percent(opts[prop])
   })
 
-  this.element.appendChild(this.content)
+  this.imageElement.appendChild(this.image)
+  this.element.appendChild(this.imageElement)
+  this.element.appendChild(this.contentElement)
 
   function runResize(){
     setTimeout(function(){
@@ -61,7 +70,7 @@ BookBinding.prototype.adjustContentHeight = function(){
 }
 
 BookBinding.prototype.appendChild = function (child) {
-  this.content.appendChild(child)
+  this.contentElement.appendChild(child)
 }
 
 BookBinding.prototype.appendTo = function (target) {
